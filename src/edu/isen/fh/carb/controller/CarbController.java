@@ -1,8 +1,8 @@
-package edu.isen.fhgd.fft.controller;
+package edu.isen.fh.carb.controller;
 
 
-import edu.isen.fhgd.fft.carburants.Carburants;
-import edu.isen.fhgd.fft.vue.Fenetre;
+import edu.isen.fh.carb.models.Carburants;
+import edu.isen.fh.carb.vue.Fenetre;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
