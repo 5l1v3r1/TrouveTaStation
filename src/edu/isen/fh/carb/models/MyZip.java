@@ -13,7 +13,11 @@ public class MyZip {
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(MyZip.class);
 
-
+    /**
+     * Dézippe un flux InputStream et enregistre le fichier
+     * @param aDezipper
+     * @param vers
+     */
     public static void unzip(InputStream aDezipper, String vers) {
         // dezippe l'archive aDezipper dans le répertoire existant vers
         try {
@@ -35,7 +39,7 @@ public class MyZip {
 
             }
             zin.close();
-            LOGGER.debug("Unzip Ok");
+            LOGGER.info("Unzip Ok");
         } catch (FileNotFoundException e) {
             LOGGER.error("Fichier non trouvé : "+ e);
         } catch (IOException e) {

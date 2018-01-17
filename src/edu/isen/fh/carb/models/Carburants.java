@@ -57,7 +57,7 @@ public class Carburants extends Observable {
 
             this.stream = connection.getInputStream();
 
-            LOGGER.debug("Récupération du flux de données");
+            LOGGER.info("Récupération du flux de données");
             this.status = "wifi";
             this.existe = true;
         } catch (Exception e) {
@@ -92,7 +92,7 @@ public class Carburants extends Observable {
 
             this.listOfLists = SaxRead.getListOfLists();
 
-            LOGGER.debug("Parsing Ok");
+            LOGGER.info("Parsing Ok");
 
             this.notifyObservers();
 
@@ -169,7 +169,7 @@ public class Carburants extends Observable {
 
     @Override
     public void notifyObservers() {
-        LOGGER.debug("Notification de fin de calcul");
+        LOGGER.info("Notification de fin de calcul");
         setChanged(); // Set the changed flag to true, otherwise observers won't be notified.
         super.notifyObservers();
     }

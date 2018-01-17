@@ -14,7 +14,6 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.net.URI;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -59,7 +58,7 @@ public class Fenetre extends JFrame implements Observer {
     private JLabel statusLabel;
 
     /**
-     * Default constructor
+     * Constructeur simple
      *
      * @param controller Contrôleur de l'application
      */
@@ -71,6 +70,7 @@ public class Fenetre extends JFrame implements Observer {
         this.controller = controller;
         this.choixActuel = 0;
         //TODO rajouter automate CB dans le Parser, Station (boolean) true false, Tableau
+        //TODO faire les tests
 
         //-------------------------------Panneau haut------------------------------------>
         JLabel p1 = new JLabel("Ville :");
@@ -93,7 +93,9 @@ public class Fenetre extends JFrame implements Observer {
             this.controller.notifyAction(choixActuel,"");
         });
 
-        JButton reloadButton = new JButton("Reload");
+        ImageIcon refreshIcon = new ImageIcon(new ImageIcon("src/icons/refresh-button.png").getImage().getScaledInstance(16,16,Image.SCALE_DEFAULT));
+
+        JButton reloadButton = new JButton(refreshIcon);
         reloadButton.addActionListener(actionEvent -> {
             this.choixActuel = 2;
             this.controller.notifyAction(choixActuel,"");
@@ -174,7 +176,7 @@ public class Fenetre extends JFrame implements Observer {
             {
                 selection = tableau.getRowSorter().convertRowIndexToModel(selection);
                 this.choixActuel = 3;
-                this.controller.notifyAction(choixActuel, modeleJTable.getRowAdresse(selection)+" "+t1.getText());
+                this.controller.notifyAction(choixActuel, modeleJTable.getValueAt(selection,0)+" "+t1.getText());
             }else{
                 LOGGER.error("Aucune selection");
             }
@@ -194,9 +196,9 @@ public class Fenetre extends JFrame implements Observer {
      */
     @Override
     public void update(Observable o, Object arg) {
-        LOGGER.debug("Mise à jour de la vue");
+        LOGGER.info("Mise à jour de la vue");
         if (o instanceof Carburants) {
-            LOGGER.debug("Affichage des valeurs");
+            LOGGER.info("Affichage des valeurs");
 
             Carburants carbu = (Carburants) o;
 
