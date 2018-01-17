@@ -2,17 +2,30 @@ package edu.isen.fh.carb.models;
 
 public class Station {
     private String adresse = "";
-    private String gazole = "";
-    private String SP95 = "";
-    private String SP98 = "";
-    private String E10 = "";
-    private String E85 = "";
-    private String GPLc = "";
+    private Float gazole = Float.parseFloat("0");
+    private Float SP95 = Float.parseFloat("0");
+    private Float SP98 = Float.parseFloat("0");
+    private Float E10 = Float.parseFloat("0");
+    private Float E85 = Float.parseFloat("0");
+    private Float GPLc = Float.parseFloat("0");
 
+    /**
+     * Constructeur Basic
+     */
     public Station() {
     }
 
-    public Station(String adresse, String gazole, String sp95, String sp98, String e10, String e85, String gpLc) {
+    /**
+     * Constructeur Complet
+     * @param adresse
+     * @param gazole
+     * @param sp95
+     * @param sp98
+     * @param e10
+     * @param e85
+     * @param gpLc
+     */
+    public Station(String adresse, Float gazole, Float sp95, Float sp98, Float e10, Float e85, Float gpLc) {
         this.adresse = adresse;
         this.gazole = gazole;
         this.SP95 = sp95;
@@ -22,59 +35,113 @@ public class Station {
         this.GPLc = gpLc;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAdresse() {
         return adresse;
     }
 
+    /**
+     *
+     * @param adresse
+     */
     public void setAdresse(String adresse) {
         this.adresse = adresse;
     }
 
-    public String getGazole() {
+    /**
+     *
+     * @return
+     */
+    public Float getGazole() {
         return gazole;
     }
 
+    /**
+     *
+     * @param gazole
+     */
     public void setGazole(String gazole) {
-        this.gazole = gazole;
+        this.gazole = Float.parseFloat(gazole);
     }
 
-    public String getSP95() {
+    /**
+     *
+     * @return
+     */
+    public Float getSP95() {
         return SP95;
     }
 
+    /**
+     *
+     * @param SP95
+     */
     public void setSP95(String SP95) {
-        this.SP95 = SP95;
+        this.SP95 = Float.parseFloat(SP95);
     }
 
-    public String getSP98() {
+    /**
+     *
+     * @return
+     */
+    public Float getSP98() {
         return SP98;
     }
 
+    /**
+     *
+     * @param SP98
+     */
     public void setSP98(String SP98) {
-        this.SP98 = SP98;
+        this.SP98 = Float.parseFloat(SP98);
     }
 
-    public String getE10() {
+    /**
+     *
+     * @return
+     */
+    public Float getE10() {
         return E10;
     }
 
-    public void setE10(String e10) {
-        E10 = e10;
-    }
+    /**
+     *
+     * @param e10
+     */
+    public void setE10(String e10) { E10 = Float.parseFloat(e10);}
 
-    public String getE85() {
+    /**
+     *
+     * @return
+     */
+    public Float getE85() {
         return E85;
     }
 
+    /**
+     *
+     * @param e85
+     */
     public void setE85(String e85) {
-        E85 = e85;
+        E85 = Float.parseFloat(e85);
     }
 
-    public String getGPLc() {
+    /**
+     *
+     * @return
+     */
+    public Float getGPLc() {
         return GPLc;
     }
 
+    /**
+     *
+     * @param GPLc
+     */
     public void setGPLc(String GPLc) {
-        this.GPLc = GPLc;
+        this.GPLc = Float.parseFloat(GPLc);
     }
 }

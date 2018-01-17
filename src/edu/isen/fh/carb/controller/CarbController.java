@@ -6,6 +6,9 @@ import edu.isen.fh.carb.vue.Fenetre;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.awt.*;
+import java.net.URI;
+
 /**
  * Contrôleur de la FFT
  */
@@ -64,24 +67,33 @@ public class CarbController {
      *
      * @param choix
      */
-    public void notifyAction(int choix) {
+    public void notifyAction(int choix, String adresse) {
         switch (choix) {
             case 1:
-                if(!this.model.isExiste()) {
+                if (!this.model.isExiste()) {
                     this.model.getHttpStream();
                     this.model.unzipTo("./src/xmlFile");
                     this.model.parseFile("./src/xmlFile/PrixCarburants_instantane.xml");
                     this.model.setExiste(true);
-                }else{
-                    LOGGER.debug("Le fichier à déjà était téléchargé");
+                } else {
+                    LOGGER.info("Le fichier à déjà était téléchargé");
                     this.model.notifyObservers();
                 }
                 break;
             case 2:
-
+                this.model.getHttpStream();
+                this.model.unzipTo("./src/xmlFile");
+                this.model.parseFile("./src/xmlFile/PrixCarburants_instantane.xml");
+                this.model.setExiste(true);
                 break;
             case 3:
-
+                adresse = model.splitAdresse(adresse);
+                Desktop d = Desktop.getDesktop();
+                try {
+                    d.browse(new URI("https://www.google.fr/maps/place/"+adresse));
+                } catch (Exception e) {
+                    LOGGER.error("URI : " + e);
+                }
                 break;
             case 4:
 

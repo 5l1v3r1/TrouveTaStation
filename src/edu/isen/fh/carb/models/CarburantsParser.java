@@ -26,7 +26,7 @@ public class CarburantsParser implements ContentHandler {
             case 2:
                 String str2 = (new String(ch, start, length)).trim();
                 if (!str2.equals(""))
-                    listOfLists.get(indice).add("ville:" + str2); // Si l'adresse n'est pas null on la stock
+                    listOfLists.get(indice).add("ville:" + str2.toLowerCase()); // Si l'adresse n'est pas null on la stock
                 break;
         }
     }

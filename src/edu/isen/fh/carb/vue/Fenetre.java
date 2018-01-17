@@ -3,16 +3,23 @@ package edu.isen.fh.carb.vue;
 import edu.isen.fh.carb.controller.CarbController;
 import edu.isen.fh.carb.models.Carburants;
 
+import edu.isen.fh.carb.models.FloatComparator;
+import edu.isen.fh.carb.models.ModeleDynamiqueJtable;
 import edu.isen.fh.carb.models.Station;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.*;
-import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import java.net.URI;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+
+import static javax.swing.ListSelectionModel.SINGLE_SELECTION;
 
 /**
  * Fenêtre de l'application
@@ -22,7 +29,14 @@ public class Fenetre extends JFrame implements Observer {
      * Logger
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(Fenetre.class);
-
+    /**
+     * Modèle dynamique du JTable
+     */
+    private ModeleDynamiqueJtable modeleJTable = new ModeleDynamiqueJtable();
+    /**
+     * Tableau JTable central
+     */
+    private JTable tableau;
     /**
      * Contrôleur de l'application
      */
@@ -32,13 +46,9 @@ public class Fenetre extends JFrame implements Observer {
      */
     private int choixActuel;
     /**
-     * Affichage des valeurs
+     * Text field de la ville
      */
-    JTextField t1, t2, t3, t4, t5, t6, t7, t8, t9;
-    JLabel p1, p2, p3, p4, p5, p6, p7, p8, p9;
-    boolean zip = false;
-    java.util.List<java.util.List<String>> listOfLists = new ArrayList<List<String>>();
-    String ville = "";
+    private JTextField t1;
 
     /**
      * Default constructor
@@ -46,45 +56,46 @@ public class Fenetre extends JFrame implements Observer {
      * @param controller Contrôleur de l'application
      */
     public Fenetre(CarbController controller) {
-        this.setTitle("Trouve ton gazole");
-        this.setSize(400, 400);
+        this.setTitle("Trouve ta station");
+        this.setSize(700, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.controller = controller;
         this.choixActuel = 0;
+        //TODO faire messages d'erreurs pour la récupération des données, en ligne, hors ligne
+        //TODO rajouter automate CB dans le Parser, Station (boolean) true false, Tableau
 
-        // Panneau nord
-        JPanel pan = new JPanel();
-        JLabel label = new JLabel("Stations");
-        pan.add(label);
-        this.getContentPane().add(pan, BorderLayout.NORTH);
-
-
-        // Panneau centre
+        //-------------------------------Panneau haut------------------------------------>
+        JLabel p1 = new JLabel("Ville :");
         t1 = new JTextField();
-        t2 = new JTextField();
-        t3 = new JTextField();
-        t4 = new JTextField();
-        t5 = new JTextField();
-        t6 = new JTextField();
-        t7 = new JTextField();
-        t8 = new JTextField();
-        t9 = new JTextField();
+        //----Raccourci ENTER sur le JTextField------------------------>
+        Action action = new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                choixActuel = 1;
+                controller.notifyAction(choixActuel,"");
+            }};
+        String keyStrokeAndKey = "ENTER";
+        KeyStroke keyStroke = KeyStroke.getKeyStroke(keyStrokeAndKey);
+        t1.getInputMap().put(keyStroke, keyStrokeAndKey);
+        t1.getActionMap().put(keyStrokeAndKey, action);
+        //------------------------------------------------------------->
+        JButton button = new JButton("Rechercher");
+        button.addActionListener(actionEvent -> {
+            this.choixActuel = 1;
+            this.controller.notifyAction(choixActuel,"");
+        });
 
-        p1 = new JLabel("Ville :");
-        p2 = new JLabel("champ2 :");
-        p3 = new JLabel("champ3 :");
-        p4 = new JLabel("champ4 :");
-        p5 = new JLabel("champ5 :");
-        p6 = new JLabel("champ6 :");
-        p7 = new JLabel("champ7 :");
-        p8 = new JLabel("champ8 :");
-        p9 = new JLabel("champ9 :");
+        JButton reloadButton = new JButton("Reload");
+        reloadButton.addActionListener(actionEvent -> {
+            this.choixActuel = 2;
+            this.controller.notifyAction(choixActuel,"");
+        });
 
-
-        JComponent pan2 = new JPanel();
-        GroupLayout layout = new GroupLayout(pan2);
-        pan2.setLayout(layout);
+        // Group Layout
+        JPanel pan = new JPanel();
+        GroupLayout layout = new GroupLayout(pan);
+        pan.setLayout(layout);
 
         // Turn on automatically adding gaps between components
         layout.setAutoCreateGaps(true);
@@ -94,71 +105,69 @@ public class Fenetre extends JFrame implements Observer {
         layout.setAutoCreateContainerGaps(true);
 
         // Create a sequential group for the horizontal axis.
-
         GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
-
-        // The sequential group in turn contains two parallel groups.
-        // One parallel group contains the labels, the other the text fields.
-        // Putting the labels in a parallel group along the horizontal axis
-        // positions them at the same x location.
-        //
-        // Variable indentation is used to reinforce the level of grouping.
         hGroup.addGroup(layout.createParallelGroup().
-                addComponent(p1).addComponent(p2).addComponent(p3).addComponent(p4).addComponent(p5).addComponent(p6).addComponent(p7).addComponent(p8).addComponent(p9));
+                addComponent(p1));
         hGroup.addGroup(layout.createParallelGroup().
-                addComponent(t1).addComponent(t2).addComponent(t3).addComponent(t4).addComponent(t5).addComponent(t6).addComponent(t7).addComponent(t8).addComponent(t9));
+                addComponent(t1));
+        hGroup.addGroup(layout.createParallelGroup().
+                addComponent(button));
+        hGroup.addGroup(layout.createParallelGroup().
+                addComponent(reloadButton));
         layout.setHorizontalGroup(hGroup);
 
         // Create a sequential group for the vertical axis.
         GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
-
-        // The sequential group contains two parallel groups that align
-        // the contents along the baseline. The first parallel group contains
-        // the first label and text field, and the second parallel group contains
-        // the second label and text field. By using a sequential group
-        // the labels and text fields are positioned vertically after one another.
         vGroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
-                addComponent(p1).addComponent(t1));
-        vGroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
-                addComponent(p2).addComponent(t2));
-        vGroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
-                addComponent(p3).addComponent(t3));
-        vGroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
-                addComponent(p4).addComponent(t4));
-        vGroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
-                addComponent(p5).addComponent(t5));
-        vGroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
-                addComponent(p6).addComponent(t6));
-        vGroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
-                addComponent(p7).addComponent(t7));
-        vGroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
-                addComponent(p8).addComponent(t8));
-        vGroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
-                addComponent(p9).addComponent(t9));
+                addComponent(p1).addComponent(t1).addComponent(button).addComponent(reloadButton));
         layout.setVerticalGroup(vGroup);
 
-        //Put the drawing area in a scroll pane.
-        JScrollPane scroller = new JScrollPane(pan2);
-        scroller.setPreferredSize(new Dimension(200, 200));
+        this.getContentPane().add(pan, BorderLayout.NORTH);
 
-        this.getContentPane().add(scroller, BorderLayout.CENTER);
+        //-------------------------------Panneau centre---------------------------------->
 
+        tableau = new JTable(modeleJTable);
+        tableau.setSelectionMode(SINGLE_SELECTION);
+        // Alternance des couleurs du fond des cases
+        UIManager.put("Table.alternateRowColor", new Color(211, 213, 213));
 
-        // Panneau au sud
+        // Taille de la première colonne
+        tableau.getColumnModel().getColumn(0).setPreferredWidth(350);
+
+        // Tri
+        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tableau.getModel());
+        sorter.setSortable(0, false);// On enlève le tri inutile sur la colonne "Adresse"
+
+        // On ajoute le tri avec le FloatComparator sur les colonnes des carburants
+        sorter.setComparator(1, new FloatComparator());
+        sorter.setComparator(2, new FloatComparator());
+        sorter.setComparator(3, new FloatComparator());
+        sorter.setComparator(4, new FloatComparator());
+        sorter.setComparator(5, new FloatComparator());
+        sorter.setComparator(6, new FloatComparator());
+
+        tableau.setRowSorter(sorter);
+
+        getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
+
+        //-------------------------------Panneau bas------------------------------------->
         Container pane = this.getContentPane();
 
-        JButton button = new JButton("File");
-        button.addActionListener(actionEvent -> {
-            this.choixActuel = 1;
-            this.controller.notifyAction(choixActuel);
+        JButton openBrowserButton = new JButton("Ouvrir la selection dans maps");
+
+        openBrowserButton.addActionListener(actionEvent -> {
+            int selection = tableau.getSelectedRow();
+            if (!(selection == -1)) // Si une ligne a était sélectionnée
+            {
+                selection = tableau.getRowSorter().convertRowIndexToModel(selection);
+                this.choixActuel = 3;
+                this.controller.notifyAction(choixActuel, modeleJTable.getRowAdresse(selection)+" "+t1.getText());
+            }else{
+                LOGGER.error("Aucune selection");
+            }
         });
 
-        GridLayout grid = new GridLayout(1, 1);
-        this.setLayout(grid);
-        JPanel panelSouth = new JPanel(grid);
-        panelSouth.add(button);
-
-        pane.add(panelSouth, BorderLayout.SOUTH);
+        pane.add(openBrowserButton, BorderLayout.SOUTH);
 
         // Visibilité du centre
         this.setVisible(true);
@@ -179,18 +188,15 @@ public class Fenetre extends JFrame implements Observer {
             Carburants carbu = (Carburants) o;
 
             List<Station> listStations;
-            ville = t1.getText();
-            ville = ville.substring(0, 1).toUpperCase() + ville.substring(1).toLowerCase();
+            String ville = t1.getText();
             listStations = carbu.stationsOf(ville);
 
+            // On supprime toutes les anciennes stations du JTables
+            modeleJTable.removeAllStations();
+
+            // On ajoute toutes les stations de la listStations dans le tableau
             for (int i = 0; i < listStations.size(); i++) {
-                LOGGER.debug(listStations.get(i).getAdresse());
-                LOGGER.debug(listStations.get(i).getGazole());
-                LOGGER.debug(listStations.get(i).getSP95());
-                LOGGER.debug(listStations.get(i).getSP98());
-                LOGGER.debug(listStations.get(i).getE10());
-                LOGGER.debug(listStations.get(i).getE85());
-                LOGGER.debug(listStations.get(i).getGPLc());
+                modeleJTable.addStation(listStations.get(i));
             }
         }
     }

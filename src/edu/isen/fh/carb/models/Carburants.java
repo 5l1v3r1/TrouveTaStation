@@ -94,7 +94,23 @@ public class Carburants extends Observable {
     }
 
     /**
-     * Donne en fonction de la ville les stations-services et leurs models correspondant
+     * Permet de spliter l'adresse au format de l'url de google maps
+     * @param adresse
+     * @return
+     */
+    public String splitAdresse(String adresse){
+        String[] array = adresse.split(" ");
+        adresse = "";
+        int i = 0;
+        for (String morceau: array) {
+            adresse = adresse + morceau;
+            if(i < array.length-1) adresse = adresse + "+";
+            i++;
+        }
+        return adresse;
+    }
+    /**
+     * Donne en fonction de la ville les stations-services (adresses+carburants)
      *
      * @param ville
      * @return
@@ -105,7 +121,7 @@ public class Carburants extends Observable {
         String[] Array;
         for (List<String> listOfList : listOfLists) {
 
-            if (listOfList.get(1).equals("ville:" + ville) || listOfList.get(1).equals("ville:" + ville.toUpperCase())) {
+            if (listOfList.get(1).equals("ville:" + ville.toLowerCase())) {
                 j = 0;
                 Station station = new Station();
 
