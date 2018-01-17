@@ -74,7 +74,6 @@ public class CarbController {
                     this.model.getHttpStream();
                     this.model.unzipTo("./src/xmlFile");
                     this.model.parseFile("./src/xmlFile/PrixCarburants_instantane.xml");
-                    this.model.setExiste(true);
                 } else {
                     LOGGER.info("Le fichier à déjà était téléchargé");
                     this.model.notifyObservers();
@@ -84,7 +83,6 @@ public class CarbController {
                 this.model.getHttpStream();
                 this.model.unzipTo("./src/xmlFile");
                 this.model.parseFile("./src/xmlFile/PrixCarburants_instantane.xml");
-                this.model.setExiste(true);
                 break;
             case 3:
                 adresse = model.splitAdresse(adresse);

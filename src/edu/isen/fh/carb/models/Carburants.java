@@ -16,6 +16,10 @@ import java.util.Observable;
 
 public class Carburants extends Observable {
     /**
+     * Variable permettant de mofifier l'icone du wifi dans l'application
+     */
+    private String status = "no-wifi";
+    /**
      * Variable permettant de savoir si le fichier à déjà était téléchargé
      */
     private boolean existe = false;
@@ -54,8 +58,12 @@ public class Carburants extends Observable {
             this.stream = connection.getInputStream();
 
             LOGGER.debug("Récupération du flux de données");
+            this.status = "wifi";
+            this.existe = true;
         } catch (Exception e) {
             LOGGER.error("Problème de récupération du flux de données : " + e);
+            this.status = "no-wifi";
+            this.existe = false;
         }
     }
 
@@ -176,5 +184,13 @@ public class Carburants extends Observable {
 
     public void setExiste(boolean existe) {
         this.existe = existe;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

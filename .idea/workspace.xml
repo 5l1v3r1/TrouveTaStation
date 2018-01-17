@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="900a4261-e74a-4025-b548-98ccfc6d5d24" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/out/production/ISEN_FFT_JAVA/edu/isen/fh/carb/models/Carburants.class" afterPath="$PROJECT_DIR$/out/production/ISEN_FFT_JAVA/edu/isen/fh/carb/models/Carburants.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/ISEN_FFT_JAVA/edu/isen/fh/carb/models/CarburantsParser.class" afterPath="$PROJECT_DIR$/out/production/ISEN_FFT_JAVA/edu/isen/fh/carb/models/CarburantsParser.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/ISEN_FFT_JAVA/edu/isen/fh/carb/models/Station.class" afterPath="$PROJECT_DIR$/out/production/ISEN_FFT_JAVA/edu/isen/fh/carb/models/Station.class" />
       <change beforePath="$PROJECT_DIR$/out/production/ISEN_FFT_JAVA/edu/isen/fh/carb/vue/Fenetre.class" afterPath="$PROJECT_DIR$/out/production/ISEN_FFT_JAVA/edu/isen/fh/carb/vue/Fenetre.class" />
       <change beforePath="$PROJECT_DIR$/out/production/ISEN_FFT_JAVA/xmlFile/PrixCarburants_instantane.xml" afterPath="$PROJECT_DIR$/out/production/ISEN_FFT_JAVA/xmlFile/PrixCarburants_instantane.xml" />
       <change beforePath="$PROJECT_DIR$/src/edu/isen/fh/carb/controller/CarbController.java" afterPath="$PROJECT_DIR$/src/edu/isen/fh/carb/controller/CarbController.java" />
       <change beforePath="$PROJECT_DIR$/src/edu/isen/fh/carb/models/Carburants.java" afterPath="$PROJECT_DIR$/src/edu/isen/fh/carb/models/Carburants.java" />
-      <change beforePath="$PROJECT_DIR$/src/edu/isen/fh/carb/models/CarburantsParser.java" afterPath="$PROJECT_DIR$/src/edu/isen/fh/carb/models/CarburantsParser.java" />
-      <change beforePath="$PROJECT_DIR$/src/edu/isen/fh/carb/models/Station.java" afterPath="$PROJECT_DIR$/src/edu/isen/fh/carb/models/Station.java" />
       <change beforePath="$PROJECT_DIR$/src/edu/isen/fh/carb/vue/Fenetre.java" afterPath="$PROJECT_DIR$/src/edu/isen/fh/carb/vue/Fenetre.java" />
       <change beforePath="$PROJECT_DIR$/src/xmlFile/PrixCarburants_instantane.xml" afterPath="$PROJECT_DIR$/src/xmlFile/PrixCarburants_instantane.xml" />
     </list>
@@ -24,37 +19,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Fenetre.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Fenetre.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/isen/fh/carb/vue/Fenetre.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="64" column="94" lean-forward="false" selection-start-line="64" selection-start-column="94" selection-end-line="64" selection-end-column="94" />
+            <state relative-caret-position="514">
+              <caret line="71" column="29" lean-forward="true" selection-start-line="71" selection-start-column="29" selection-end-line="71" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2141#2347#0" expanded="true" />
-                <element signature="e#2346#2347#0" expanded="true" />
-                <element signature="e#4985#4997#0" expanded="true" />
+                <element signature="e#2181#2387#0" expanded="true" />
+                <element signature="e#2386#2387#0" expanded="true" />
+                <element signature="e#5369#5381#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Carburants.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Carburants.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/isen/fh/carb/models/Carburants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="497">
-              <caret line="109" column="22" lean-forward="false" selection-start-line="109" selection-start-column="22" selection-end-line="109" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CarbController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/isen/fh/carb/controller/CarbController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="88" column="19" lean-forward="false" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="19" />
-              <folding />
+            <state relative-caret-position="450">
+              <caret line="42" column="7" lean-forward="true" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
+              <folding>
+                <element signature="e#5291#5292#0" expanded="true" />
+                <element signature="e#5320#5321#0" expanded="true" />
+                <element signature="e#5364#5365#0" expanded="true" />
+                <element signature="e#5400#5401#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -122,8 +112,8 @@
         <option value="$PROJECT_DIR$/src/edu/isen/fh/carb/models/FloatComparator.java" />
         <option value="$PROJECT_DIR$/src/edu/isen/fh/carb/models/ModeleDynamiqueJtable.java" />
         <option value="$PROJECT_DIR$/src/edu/isen/fh/carb/controller/CarbController.java" />
-        <option value="$PROJECT_DIR$/src/edu/isen/fh/carb/models/Carburants.java" />
         <option value="$PROJECT_DIR$/src/edu/isen/fh/carb/vue/Fenetre.java" />
+        <option value="$PROJECT_DIR$/src/edu/isen/fh/carb/models/Carburants.java" />
       </list>
     </option>
   </component>
@@ -201,6 +191,12 @@
               <item name="JavaCarb" type="b2602c69:ProjectViewProjectNode" />
               <item name="JavaCarb" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="icons" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JavaCarb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JavaCarb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="xmlFile" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -227,6 +223,11 @@
       <recent name="edu.isen.fh.carb.models" />
       <recent name="edu.isen.fhgd.fft" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/icons" />
+      <recent name="$PROJECT_DIR$/src/edu/isen/fh/carb/models" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="edu.isen.fhgd.fft.models" />
     </key>
@@ -236,10 +237,6 @@
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/edu/isen/fh/carb/models" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -468,7 +465,7 @@
       <workItem from="1516036081331" duration="33000" />
       <workItem from="1516045265754" duration="3279000" />
       <workItem from="1516098330742" duration="17132000" />
-      <workItem from="1516184771787" duration="15419000" />
+      <workItem from="1516184771787" duration="21289000" />
     </task>
     <servers />
   </component>
@@ -505,7 +502,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80034000" />
+    <option name="totallyTimeSpent" value="85904000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -533,7 +530,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1904762" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1904762" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -562,9 +559,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/edu/isen/fhgd/fft/FFTController.java" />
-    <entry file="file://$PROJECT_DIR$/src/edu/isen/fhgd/fft/FFT.java" />
-    <entry file="file://$PROJECT_DIR$/src/edu/isen/fhgd/fft/Cartesian.java" />
     <entry file="file://$PROJECT_DIR$/src/edu/isen/fhgd/fft/FFT.java" />
     <entry file="file://$PROJECT_DIR$/src/edu/isen/fhgd/fft/Cartesian.java" />
     <entry file="file://$PROJECT_DIR$/src/edu/isen/fhgd/fft/FFT.java" />
@@ -663,6 +657,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="10" column="5" lean-forward="false" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -802,22 +797,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/isen/fh/carb/controller/CarbController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="88" column="19" lean-forward="false" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/isen/fh/carb/models/Carburants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="109" column="22" lean-forward="false" selection-start-line="109" selection-start-column="22" selection-end-line="109" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/isen/fh/carb/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -834,15 +813,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-9.jdk/Contents/Home/lib/src.zip!/java.desktop/java/awt/Component.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="7012" column="0" lean-forward="false" selection-start-line="7012" selection-start-column="0" selection-end-line="7012" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-9.jdk/Contents/Home/lib/src.zip!/java.desktop/java/awt/Container.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="761">
+          <caret line="1607" column="0" lean-forward="false" selection-start-line="1607" selection-start-column="0" selection-end-line="1607" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-9.jdk/Contents/Home/lib/src.zip!/java.desktop/javax/swing/GroupLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="1011" column="0" lean-forward="false" selection-start-line="1011" selection-start-column="0" selection-end-line="1011" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/isen/fh/carb/vue/Fenetre.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="64" column="94" lean-forward="false" selection-start-line="64" selection-start-column="94" selection-end-line="64" selection-end-column="94" />
+        <state relative-caret-position="514">
+          <caret line="71" column="29" lean-forward="true" selection-start-line="71" selection-start-column="29" selection-end-line="71" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2141#2347#0" expanded="true" />
-            <element signature="e#2346#2347#0" expanded="true" />
-            <element signature="e#4985#4997#0" expanded="true" />
+            <element signature="e#2181#2387#0" expanded="true" />
+            <element signature="e#2386#2387#0" expanded="true" />
+            <element signature="e#5369#5381#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/isen/fh/carb/controller/CarbController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="97" column="22" lean-forward="true" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/isen/fh/carb/models/Carburants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="42" column="7" lean-forward="true" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
+          <folding>
+            <element signature="e#5291#5292#0" expanded="true" />
+            <element signature="e#5320#5321#0" expanded="true" />
+            <element signature="e#5364#5365#0" expanded="true" />
+            <element signature="e#5400#5401#0" expanded="true" />
           </folding>
         </state>
       </provider>

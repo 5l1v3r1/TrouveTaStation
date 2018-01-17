@@ -49,6 +49,14 @@ public class Fenetre extends JFrame implements Observer {
      * Text field de la ville
      */
     private JTextField t1;
+    /**
+     * Icone du wifi
+     */
+    private ImageIcon icon;
+    /**
+     * JLabel du wifi
+     */
+    private JLabel statusLabel;
 
     /**
      * Default constructor
@@ -62,7 +70,6 @@ public class Fenetre extends JFrame implements Observer {
         this.setLocationRelativeTo(null);
         this.controller = controller;
         this.choixActuel = 0;
-        //TODO faire messages d'erreurs pour la récupération des données, en ligne, hors ligne
         //TODO rajouter automate CB dans le Parser, Station (boolean) true false, Tableau
 
         //-------------------------------Panneau haut------------------------------------>
@@ -92,6 +99,11 @@ public class Fenetre extends JFrame implements Observer {
             this.controller.notifyAction(choixActuel,"");
         });
 
+        // Icone wifi
+        icon = new ImageIcon(new ImageIcon("src/icons/no-wifi.png").getImage().getScaledInstance(16,16,Image.SCALE_DEFAULT));
+        statusLabel = new JLabel();
+        statusLabel.setIcon(icon);
+
         // Group Layout
         JPanel pan = new JPanel();
         GroupLayout layout = new GroupLayout(pan);
@@ -114,12 +126,14 @@ public class Fenetre extends JFrame implements Observer {
                 addComponent(button));
         hGroup.addGroup(layout.createParallelGroup().
                 addComponent(reloadButton));
+        hGroup.addGroup(layout.createParallelGroup().
+                addComponent(statusLabel));
         layout.setHorizontalGroup(hGroup);
 
         // Create a sequential group for the vertical axis.
         GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
         vGroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
-                addComponent(p1).addComponent(t1).addComponent(button).addComponent(reloadButton));
+                addComponent(p1).addComponent(t1).addComponent(button).addComponent(reloadButton).addComponent(statusLabel));
         layout.setVerticalGroup(vGroup);
 
         this.getContentPane().add(pan, BorderLayout.NORTH);
@@ -151,7 +165,6 @@ public class Fenetre extends JFrame implements Observer {
         getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
 
         //-------------------------------Panneau bas------------------------------------->
-        Container pane = this.getContentPane();
 
         JButton openBrowserButton = new JButton("Ouvrir la selection dans maps");
 
@@ -167,7 +180,7 @@ public class Fenetre extends JFrame implements Observer {
             }
         });
 
-        pane.add(openBrowserButton, BorderLayout.SOUTH);
+        this.getContentPane().add(openBrowserButton, BorderLayout.SOUTH);
 
         // Visibilité du centre
         this.setVisible(true);
@@ -186,6 +199,10 @@ public class Fenetre extends JFrame implements Observer {
             LOGGER.debug("Affichage des valeurs");
 
             Carburants carbu = (Carburants) o;
+
+            // Modification de l'icone en fonction du status
+            icon = new ImageIcon(new ImageIcon("src/icons/"+carbu.getStatus()+".png").getImage().getScaledInstance(16,16,Image.SCALE_DEFAULT));
+            statusLabel.setIcon(icon);
 
             List<Station> listStations;
             String ville = t1.getText();
