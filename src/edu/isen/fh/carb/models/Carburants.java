@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 import java.net.URL;
@@ -19,10 +20,6 @@ public class Carburants extends Observable {
      * Variable permettant de mofifier l'icone du wifi dans l'application
      */
     private String status = "no-wifi";
-    /**
-     * Variable permettant de savoir si le fichier à déjà était téléchargé
-     */
-    private boolean existe = false;
     /**
      * Logger
      */
@@ -59,11 +56,9 @@ public class Carburants extends Observable {
 
             LOGGER.info("Récupération du flux de données");
             this.status = "wifi";
-            this.existe = true;
         } catch (Exception e) {
             LOGGER.error("Problème de récupération du flux de données : " + e);
             this.status = "no-wifi";
-            this.existe = false;
         }
     }
 
@@ -103,20 +98,23 @@ public class Carburants extends Observable {
 
     /**
      * Permet de spliter l'adresse au format de l'url de google maps
+     *
      * @param adresse
      * @return
      */
-    public String splitAdresse(String adresse){
+    public String splitAdresse(String adresse) {
         String[] array = adresse.split(" ");
         adresse = "";
         int i = 0;
-        for (String morceau: array) {
+        for (String morceau : array) {
+            morceau = Normalizer.normalize(morceau, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", ""); // On enlève tous les accents
             adresse = adresse + morceau;
-            if(i < array.length-1) adresse = adresse + "+";
+            if (i < array.length - 1) adresse = adresse + "+";
             i++;
         }
         return adresse;
     }
+
     /**
      * Donne en fonction de la ville les stations-services (adresses+carburants)
      *
@@ -176,14 +174,6 @@ public class Carburants extends Observable {
 
     public List<List<String>> getListOfLists() {
         return listOfLists;
-    }
-
-    public boolean isExiste() {
-        return existe;
-    }
-
-    public void setExiste(boolean existe) {
-        this.existe = existe;
     }
 
     public String getStatus() {

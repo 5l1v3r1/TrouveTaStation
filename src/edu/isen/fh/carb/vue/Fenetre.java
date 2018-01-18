@@ -57,6 +57,8 @@ public class Fenetre extends JFrame implements Observer {
      */
     private JLabel statusLabel;
 
+    private JPanel cards = new JPanel(new CardLayout());
+
     /**
      * Constructeur simple
      *
@@ -71,6 +73,7 @@ public class Fenetre extends JFrame implements Observer {
         this.choixActuel = 0;
         //TODO rajouter automate CB dans le Parser, Station (boolean) true false, Tableau
         //TODO faire les tests
+
 
         //-------------------------------Panneau haut------------------------------------>
         JLabel p1 = new JLabel("Ville :");
@@ -102,9 +105,7 @@ public class Fenetre extends JFrame implements Observer {
         });
 
         // Icone wifi
-        icon = new ImageIcon(new ImageIcon("src/icons/no-wifi.png").getImage().getScaledInstance(16,16,Image.SCALE_DEFAULT));
         statusLabel = new JLabel();
-        statusLabel.setIcon(icon);
 
         // Group Layout
         JPanel pan = new JPanel();
@@ -164,7 +165,15 @@ public class Fenetre extends JFrame implements Observer {
 
         tableau.setRowSorter(sorter);
 
-        getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
+        JPanel panel2 = new JPanel();
+        JLabel labelLoading = new JLabel();
+        labelLoading.setText("Chargement...");
+        panel2.add(labelLoading);
+
+        cards.add(panel2,"Chargement");
+        cards.add(new JScrollPane(tableau), "JTable");
+
+        getContentPane().add(cards, BorderLayout.CENTER);
 
         //-------------------------------Panneau bas------------------------------------->
 
@@ -181,11 +190,18 @@ public class Fenetre extends JFrame implements Observer {
                 LOGGER.error("Aucune selection");
             }
         });
-
         this.getContentPane().add(openBrowserButton, BorderLayout.SOUTH);
 
         // Visibilité du centre
         this.setVisible(true);
+
+        // Téléchargement des données au lancement de l'application
+        this.choixActuel = 2;
+        this.controller.notifyAction(choixActuel,"");
+
+        // Affichage du JTable une fois que le script reprend
+        CardLayout cardLayout = (CardLayout) cards.getLayout();
+        cardLayout.show(cards, "JTable");
     }
 
     /**

@@ -70,14 +70,7 @@ public class CarbController {
     public void notifyAction(int choix, String adresse) {
         switch (choix) {
             case 1:
-                if (!this.model.isExiste()) {
-                    this.model.getHttpStream();
-                    this.model.unzipTo("./src/xmlFile");
-                    this.model.parseFile("./src/xmlFile/PrixCarburants_instantane.xml");
-                } else {
-                    LOGGER.info("Le fichier à déjà était téléchargé");
-                    this.model.notifyObservers();
-                }
+                this.model.notifyObservers();
                 break;
             case 2:
                 this.model.getHttpStream();
@@ -88,8 +81,9 @@ public class CarbController {
                 adresse = model.splitAdresse(adresse);
                 Desktop d = Desktop.getDesktop();
                 try {
-                    d.browse(new URI("https://www.google.fr/maps/place/"+adresse));
+                    d.browse(new URI("https://www.google.fr/maps/place/" + adresse));
                 } catch (Exception e) {
+                    LOGGER.error("Adresse : " + adresse);
                     LOGGER.error("URI : " + e);
                 }
                 break;
