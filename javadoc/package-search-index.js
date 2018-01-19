@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"edu.isen.fh.carb"},{"l":"edu.isen.fh.carb.controller"},{"l":"edu.isen.fh.carb.models"},{"l":"edu.isen.fh.carb.vue"}]
