@@ -20,11 +20,7 @@ public class CarbController {
     /**
      * Modèle de données Carburants
      */
-    private Carburants model = null;
-    /**
-     * Fenêtre d'affichage
-     */
-    private Fenetre fen;
+    private Carburants model;
 
     /**
      * Default constructor
@@ -44,23 +40,7 @@ public class CarbController {
         this.model = carburants;
     }
 
-    /**
-     * Récupération de la fenêtre
-     *
-     * @return
-     */
-    public Fenetre getFen() {
-        return fen;
-    }
 
-    /**
-     * Setter de fenêtre
-     *
-     * @param fen
-     */
-    public void setFen(Fenetre fen) {
-        this.fen = fen;
-    }
 
     /**
      * Notification d'une action par la vue
@@ -86,15 +66,6 @@ public class CarbController {
                     LOGGER.error("Adresse : " + adresse);
                     LOGGER.error("URI : " + e);
                 }
-                break;
-            case 4:
-
-                break;
-            case 5:
-
-                break;
-            case 6:
-
                 break;
             default:
                 break;

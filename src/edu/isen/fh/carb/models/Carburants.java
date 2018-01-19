@@ -33,7 +33,7 @@ public class Carburants extends Observable {
     /**
      * Flux de données
      */
-    InputStream stream = null;
+    private InputStream stream = null;
 
     /**
      * Constructeur Basic
@@ -172,15 +172,7 @@ public class Carburants extends Observable {
         super.notifyObservers();
     }
 
-    public List<List<String>> getListOfLists() {
-        return listOfLists;
-    }
-
     public String getStatus() {
         return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 }

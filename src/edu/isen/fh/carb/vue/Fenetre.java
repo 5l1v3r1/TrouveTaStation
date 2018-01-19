@@ -49,15 +49,9 @@ public class Fenetre extends JFrame implements Observer {
      */
     private JTextField t1;
     /**
-     * Icone du wifi
-     */
-    private ImageIcon icon;
-    /**
      * JLabel du wifi
      */
     private JLabel statusLabel;
-
-    private JPanel cards = new JPanel(new CardLayout());
 
     /**
      * Constructeur simple
@@ -73,12 +67,15 @@ public class Fenetre extends JFrame implements Observer {
         this.choixActuel = 0;
         //TODO rajouter automate CB dans le Parser, Station (boolean) true false, Tableau
         //TODO faire les tests
+        //TODO virer la fenêtre du controller
 
 
         //-------------------------------Panneau haut------------------------------------>
+        // Zone de texte de la ville
         JLabel p1 = new JLabel("Ville :");
         t1 = new JTextField();
-        //----Raccourci ENTER sur le JTextField------------------------>
+
+        // Raccourci ENTER sur le JTextField
         Action action = new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -89,15 +86,18 @@ public class Fenetre extends JFrame implements Observer {
         KeyStroke keyStroke = KeyStroke.getKeyStroke(keyStrokeAndKey);
         t1.getInputMap().put(keyStroke, keyStrokeAndKey);
         t1.getActionMap().put(keyStrokeAndKey, action);
-        //------------------------------------------------------------->
+
+        // Bouton de recherche
         JButton button = new JButton("Rechercher");
         button.addActionListener(actionEvent -> {
             this.choixActuel = 1;
             this.controller.notifyAction(choixActuel,"");
         });
 
+        // Icone d'affichage de la connexion internet
         ImageIcon refreshIcon = new ImageIcon(new ImageIcon("src/icons/refresh-button.png").getImage().getScaledInstance(16,16,Image.SCALE_DEFAULT));
 
+        // Bouton d'actualisation
         JButton reloadButton = new JButton(refreshIcon);
         reloadButton.addActionListener(actionEvent -> {
             this.choixActuel = 2;
@@ -112,14 +112,11 @@ public class Fenetre extends JFrame implements Observer {
         GroupLayout layout = new GroupLayout(pan);
         pan.setLayout(layout);
 
-        // Turn on automatically adding gaps between components
         layout.setAutoCreateGaps(true);
 
-        // Turn on automatically creating gaps between components that touch
-        // the edge of the container and the container.
         layout.setAutoCreateContainerGaps(true);
 
-        // Create a sequential group for the horizontal axis.
+        // Groupe horizontal
         GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
         hGroup.addGroup(layout.createParallelGroup().
                 addComponent(p1));
@@ -133,16 +130,17 @@ public class Fenetre extends JFrame implements Observer {
                 addComponent(statusLabel));
         layout.setHorizontalGroup(hGroup);
 
-        // Create a sequential group for the vertical axis.
+        // Groupe vertical
         GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
         vGroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
                 addComponent(p1).addComponent(t1).addComponent(button).addComponent(reloadButton).addComponent(statusLabel));
         layout.setVerticalGroup(vGroup);
 
+        // On ajoute le JPanel
         this.getContentPane().add(pan, BorderLayout.NORTH);
 
         //-------------------------------Panneau centre---------------------------------->
-
+        // Création du tableau pour l'affichage des stations
         tableau = new JTable(modeleJTable);
         tableau.setSelectionMode(SINGLE_SELECTION);
         // Alternance des couleurs du fond des cases
@@ -165,18 +163,21 @@ public class Fenetre extends JFrame implements Observer {
 
         tableau.setRowSorter(sorter);
 
+        // Création d'un JPanel pour afficher le chargement
         JPanel panel2 = new JPanel();
         JLabel labelLoading = new JLabel();
         labelLoading.setText("Chargement...");
         panel2.add(labelLoading);
 
+        //CardLayout permettant de changer de Panel facilement
+        JPanel cards = new JPanel(new CardLayout());
         cards.add(panel2,"Chargement");
         cards.add(new JScrollPane(tableau), "JTable");
 
         getContentPane().add(cards, BorderLayout.CENTER);
 
         //-------------------------------Panneau bas------------------------------------->
-
+        // Création d'un bouton pour ouvrir l'adresse de la station selectionnée dans maps
         JButton openBrowserButton = new JButton("Ouvrir la selection dans maps");
 
         openBrowserButton.addActionListener(actionEvent -> {
@@ -219,9 +220,10 @@ public class Fenetre extends JFrame implements Observer {
             Carburants carbu = (Carburants) o;
 
             // Modification de l'icone en fonction du status
-            icon = new ImageIcon(new ImageIcon("src/icons/"+carbu.getStatus()+".png").getImage().getScaledInstance(16,16,Image.SCALE_DEFAULT));
+            ImageIcon icon = new ImageIcon(new ImageIcon("src/icons/"+carbu.getStatus()+".png").getImage().getScaledInstance(16,16,Image.SCALE_DEFAULT));
             statusLabel.setIcon(icon);
 
+            // Stockage des stations de la ville dans la liste
             List<Station> listStations;
             String ville = t1.getText();
             listStations = carbu.stationsOf(ville);

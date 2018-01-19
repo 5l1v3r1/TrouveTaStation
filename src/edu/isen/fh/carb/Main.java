@@ -20,6 +20,5 @@ public class Main {
         // Ajout de l'observer
         carb.addObserver(fen);
         controller.setCarburants(carb);
-        controller.setFen(fen);
     }
 }
