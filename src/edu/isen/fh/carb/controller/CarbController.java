@@ -54,8 +54,8 @@ public class CarbController {
                 break;
             case 2:
                 this.model.getHttpStream();
-                this.model.unzipTo("./src/xmlFile");
-                this.model.parseFile("./src/xmlFile/PrixCarburants_instantane.xml");
+                this.model.unzipTo("./src");
+                this.model.parseFile("./src/PrixCarburants_instantane.xml");
                 break;
             case 3:
                 adresse = model.splitAdresse(adresse);
